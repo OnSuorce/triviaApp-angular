@@ -1,0 +1,10 @@
+.question-set-card {
+    display: flex;
+    flex-direction: row; /* I contenuti saranno disposti verticalmente */
+    align-items: center; /* Centra i contenuti lungo l'asse orizzontale (asse X) */
+    justify-content: center; /* Centra i contenuti lungo l'asse verticale (asse Y) */
+  }
+
+.question-set-card p-card{
+    margin: 10px;
+}
