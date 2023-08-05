@@ -1,3 +1,4 @@
+<p-messages [(value)]="errorMessages" ></p-messages>
 <div class="header">
   <h1>Home Page</h1>
 </div>
@@ -11,14 +12,29 @@
           <p-button label="Delete" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
       </ng-template>
   </p-card>
-  <p-card [style]="{ width: '360px' }" >
-    <i class="pi pi-plus" style="font-size: 2.5rem"></i>
+  <p-card  class="last-card" [style]="{ width: '360px', height:'188px' }" >
+    <i class="pi pi-plus centered-icon" style="font-size: 2.5rem" (click)="showDialog()"></i>
     <ng-template pTemplate="footer">
         
     </ng-template>
 </p-card>
   </div>
-
+  <p-dialog header="New Question Set" [(visible)]="displayDialog" [style]="{ width: '300px' }" [modal]="true">
+    <div class="form-container">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input id="name" type="text" pInputText [(ngModel)]="creatingQs.setName">
+      </div>
+      <div class="form-field">
+        <label for="description">Description</label>
+        <textarea [(ngModel)]="creatingQs.description" name="description" rows="5" cols="22" pInputTextarea ></textarea>
+      </div>
+      <div class="form-buttons">
+        <p-button  label="Confirm" (click)="onConfirm()" class="p-button-success"></p-button>
+        <p-button  label="Cancel" (click)="onCancel()" class="p-button-secondary"></p-button>
+      </div>
+    </div>
+  </p-dialog>
  
   
 </div>
