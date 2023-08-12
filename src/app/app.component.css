@@ -71,3 +71,7 @@
   color: #fff;
 }
 
+.navbar {
+  background-color: #a0c4ff; /* Colore blu chiaro */
+  color: #fff; /* Colore del testo bianco per il contrasto */
+}

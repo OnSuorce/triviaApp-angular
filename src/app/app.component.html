@@ -1,7 +1,5 @@
-<p-messages [(value)]="errorMessages" ></p-messages>
-<div class="header">
-  <h1>Home Page</h1>
-</div>
+
+<p-menubar class="navbar">Suca</p-menubar>
 
 <div class="question-set-container">
   <div class="question-set-card">
@@ -9,7 +7,7 @@
       
       <ng-template pTemplate="footer">
           <p-button label="View" ></p-button>
-          <p-button label="Delete" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
+          <p-button label="Delete" styleClass="p-button-secondary" (click)="removeQs(questionSet)" [style]="{ 'margin-left': '.5em' }"></p-button>
       </ng-template>
   </p-card>
   <p-card  class="last-card" [style]="{ width: '360px', height:'188px' }" >
@@ -33,8 +31,9 @@
         <p-button  label="Confirm" (click)="onConfirm()" class="p-button-success"></p-button>
         <p-button  label="Cancel" (click)="onCancel()" class="p-button-secondary"></p-button>
       </div>
+      
     </div>
   </p-dialog>
- 
+  <p-messages [(value)]="errorMessages" class="messages-overlay"></p-messages>
   
 </div>

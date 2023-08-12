@@ -58,4 +58,26 @@ export class AppComponent {
     
     this.displayDialog = false;
   }
+
+  removeQs(qs: QuestionSet){
+    this.triviaService.deleteQuestionSet(qs).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => this.messageService.add({
+        severity: "error",
+        summary: "Error deleting question set",
+        detail: e['message'],
+      }),
+
+      complete: () =>  this.messageService.add({
+        severity: "success",
+        summary: "Deleted "+qs.setName,
+        detail: "",
+      }) 
+    })
+
+    const index = this.qsList.indexOf(qs);
+    if (index !== -1) {
+      this.qsList.splice(index, 1);
+    }
+  }
 }

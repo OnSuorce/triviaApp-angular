@@ -48,4 +48,14 @@ export class TriviaApiService {
       );
   }
 
+  deleteQuestionSet(qs: QuestionSet): Observable<any> {
+    
+    return this.http.delete<any[]>(`${environment.apiUrl}/questionset/${qs.setName}`).pipe(
+      catchError((error: any) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+  }
+
 }

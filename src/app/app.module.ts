@@ -8,7 +8,8 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputTextareaModule } from 'primeng/inputtextarea'; // Assicurati che questa riga sia presente
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MenubarModule } from 'primeng/menubar';
 import { FormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 @NgModule({
@@ -17,6 +18,7 @@ import { MessagesModule } from 'primeng/messages';
   ],
   imports: [
     ButtonModule,
+    MenubarModule,
     MessagesModule,
     FormsModule,
     InputTextModule,
