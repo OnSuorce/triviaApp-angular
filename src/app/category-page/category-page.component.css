@@ -1,0 +1,55 @@
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Aggiunge spazio tra le categorie */
+}
+
+.category {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 20px); /* Massimo 3 elementi per riga con spazio tra di loro */
+  text-align: center;
+  cursor: pointer;
+}
+
+.category:hover {
+  background-color: #e0e0e0;
+}
+
+.category-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+i{
+  font-size: 1.5rem; /* Dimensione del font maggiore */
+  font-weight: bold; /* Testo in grassetto */
+  color: #333;  /* Margine inferiore per separare da <p> */
+}
+.category-title {
+  font-size: 1.5rem; /* Dimensione del font maggiore */
+  font-weight: bold; /* Testo in grassetto */
+  color: #333; /* Colore del testo scuro */
+  margin-bottom: 5px; /* Margine inferiore per separare da <p> */
+}
+
+
+
+/* Stili per l'elemento <p> */
+.category-subtitle {
+  font-size: 1rem; /* Dimensione del font normale */
+  color: #666; /* Colore del testo più chiaro */
+  margin-bottom: 15px; /* Maggiore margine inferiore per separare le categorie */
+}
+
+.truncate-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Imposta la larghezza massima disponibile */
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,9 +12,13 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MenubarModule } from 'primeng/menubar';
 import { FormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
+import { CategoryPageComponent } from './category-page/category-page.component';
+import { QuestionsetPageComponent } from './questionset-page/questionset-page.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategoryPageComponent,
+    QuestionsetPageComponent,
   ],
   imports: [
     ButtonModule,

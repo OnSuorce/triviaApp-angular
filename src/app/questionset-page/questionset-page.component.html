@@ -1,0 +1,34 @@
+<div class="question-set-container">
+  <div class="question-set-card">
+    <p-card [header]="questionSet.setName" [subheader]="questionSet.description" [style]="{ width: '360px' }" *ngFor="let questionSet of qsList">
+
+      <ng-template pTemplate="footer">
+        <p-button label="View" (click)="goToCategory(questionSet.setName)" ></p-button>
+        <p-button label="Delete" styleClass="p-button-secondary" (click)="removeQs(questionSet)" [style]="{ 'margin-left': '.5em' }"></p-button>
+      </ng-template>
+    </p-card>
+    <p-card  class="last-card" [style]="{ width: '360px', height:'188px' }" >
+      <i class="pi pi-plus centered-icon" style="font-size: 2.5rem" (click)="showDialog()"></i>
+      <ng-template pTemplate="footer">
+
+      </ng-template>
+    </p-card>
+  </div>
+  <p-dialog header="New Question Set" [(visible)]="displayDialog" [style]="{ width: '300px' }" [modal]="true">
+    <div class="form-container">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input id="name" type="text" pInputText [(ngModel)]="creatingQs.setName">
+      </div>
+      <div class="form-field">
+        <label for="description">Description</label>
+        <textarea [(ngModel)]="creatingQs.description" id="description" rows="5" cols="21" pInputTextarea ></textarea>
+      </div>
+      <div class="form-buttons">
+        <p-button  label="Confirm" (click)="onConfirm()" class="p-button-success"></p-button>
+        <p-button  label="Cancel" (click)="onCancel()" class="p-button-secondary"></p-button>
+      </div>
+
+    </div>
+  </p-dialog>
+</div>
