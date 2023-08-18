@@ -21,6 +21,7 @@
 
 .category-content {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
 
@@ -52,4 +53,17 @@ i{
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 100%; /* Imposta la larghezza massima disponibile */
+}
+
+.close-icon {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: red; /* Cambia il colore dell'icona quando il cursore è sopra di essa */
 }

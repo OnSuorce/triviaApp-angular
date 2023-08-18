@@ -2,6 +2,8 @@
 <div class="category-list">
   <div class="category" *ngFor="let category of categories" (click)="openCategory()">
     <div class="category-content">
+      <i class="pi pi-trash close-icon" (click)="deleteCategory(category)"></i>
+
       <h3 class="category-title truncate-text">{{ category.categoryName }}</h3>
       <p class="category-subtitle truncate-text">{{ category.description }}</p>
     </div>

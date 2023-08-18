@@ -84,4 +84,25 @@ export class CategoryPageComponent implements OnInit{
       }
     })
   }
+
+  deleteCategory(category: Category) {
+    this.apiService.deleteCategory(this.qsName, category.categoryName).subscribe({
+      error: (e) =>  this.messageService.add({
+        severity: "error",
+        summary: "Error",
+        detail: e['error']['message'],
+      }),
+      complete: () => {
+        this.messageService.add({
+          severity: "success",
+          summary: "Category eliminated!",
+          detail: "",
+        })
+        let index = this.categories.indexOf(category);
+        if (index !== -1) {
+          this.categories.splice(index, 1);
+        }
+      }
+    })
+  }
 }
