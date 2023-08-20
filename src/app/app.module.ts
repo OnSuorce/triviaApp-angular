@@ -14,14 +14,22 @@ import { FormsModule } from '@angular/forms';
 import { MessagesModule } from 'primeng/messages';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { QuestionsetPageComponent } from './questionset-page/questionset-page.component';
+import { QuestionListPageComponent } from './question-list-page/question-list-page.component';
+import { PanelModule } from 'primeng/panel';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { AnswerBoxComponent } from './answer-box/answer-box.component';
 @NgModule({
   declarations: [
     AppComponent,
     CategoryPageComponent,
     QuestionsetPageComponent,
+    QuestionListPageComponent,
+    AnswerBoxComponent,
   ],
   imports: [
     ButtonModule,
+    SplitButtonModule,
+    PanelModule,
     MenubarModule,
     MessagesModule,
     FormsModule,

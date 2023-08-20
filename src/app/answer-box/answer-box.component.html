@@ -1,0 +1,11 @@
+<!-- question-dialog.component.html -->
+
+<div class="dialog-content">
+  <h2 class="dialog-header">{{ question.text }}</h2>
+  <hr class="dialog-separator" />
+  <div class="dialog-options">
+    <button *ngFor="let option of question.options" class="dialog-button">{{ option }}</button>
+  </div>
+  <hr class="dialog-separator" />
+  <p class="dialog-outcome">Outcome Message: </p>
+</div>
