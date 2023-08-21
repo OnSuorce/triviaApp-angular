@@ -1,40 +1,70 @@
-.dialog-content {
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  border-radius: 10px;
 }
 
-.dialog-header {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+.answer-question {
+  text-align: center;
+  transition: color 0.5s ease, transform 0.2s ease-in-out;
 }
 
-.dialog-separator {
+.answer-separator {
+  width: 100%;
   border: none;
   border-top: 1px solid #ccc;
   margin: 10px 0;
 }
 
-.dialog-options {
+.answer-options {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 20px 0;
 }
 
-.dialog-button {
+.answer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 16px;
   background-color: #007bff;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  max-width: 10vw;
+  min-width: 4vw;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.dialog-button:hover {
+.answer-button:hover {
   background-color: #0056b3;
 }
 
-.dialog-outcome {
-  font-weight: bold;
-  margin-top: 15px;
+.selected {
+  background-color: #00cc00 !important;
+  color: #ffffff !important;
+}
+
+.correct {
+  background-color: #00cc00;
+  color: #ffffff;
+}
+
+.wrong {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+
+
+
+:host {
+  display: block;
+  max-width: 40vw;
+  min-width: 20vw;
+  /* Altri stili per il tuo componente */
 }

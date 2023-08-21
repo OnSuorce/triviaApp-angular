@@ -60,3 +60,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.app-answer-box {
+  min-width: 40vw;
+  /* Altri stili per il tuo componente */
+}
+

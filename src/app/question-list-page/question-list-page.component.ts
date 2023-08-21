@@ -71,8 +71,7 @@ export class QuestionListPageComponent implements OnInit{
     const ref = this.dialogService.open(AnswerBoxComponent, {
       data: {
         question: question
-      },
-      header: 'Question'
+      }
     });
   }
 }
