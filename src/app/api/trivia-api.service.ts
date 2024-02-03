@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../env/environment';
 import {QuestionSet} from '../shared/QuestionSet'
 import {Category} from "../shared/Category";
+import {Question} from "../shared/Question";
 
 @Injectable({
   providedIn: 'root'
@@ -136,4 +137,34 @@ export class TriviaApiService {
   }
 
 
+  postAnswer(answer: String, uuid: String): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+      // Altre intestazioni personalizzate se necessario
+    });
+
+    const requestBody = {
+      "guess": answer
+    };
+
+    return this.http.post<any[]>(`${environment.apiUrl}/question/${uuid}/answer`, requestBody, {headers}).pipe(
+      catchError((error: any) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+  }
+
+  getQuestionList(qsName: string, category: string): Observable<Question[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/question/?categoryName=${category}&questionSet=${qsName}`).pipe(
+      map((data: any[]) => {
+        return data.map((c: any) => ({
+          questionTitle: c.question_title,
+          categoryName: c.category_name,
+          uuid: c.uuid,
+          optionList: c.option_list
+        }));
+      })
+    );
+  }
 }

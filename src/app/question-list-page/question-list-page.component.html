@@ -6,7 +6,7 @@
 -->
 <div class="question-list">
   <div class="question-container" *ngFor="let question of questions">
-    <div class="question-text">{{ question.text }}</div>
+    <div class="question-text">{{ question.questionTitle }}</div>
     <p-splitButton label="Try"  icon="pi pi-question-circle" (click)="openDialog(question)" [model]="items" styleClass="p-button-raised mr-2 mb-2"></p-splitButton>
   </div>
 </div>

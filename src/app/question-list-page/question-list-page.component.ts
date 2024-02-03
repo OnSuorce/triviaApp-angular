@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem, MessageService} from "primeng/api";
 import {DialogService} from "primeng/dynamicdialog";
 import {AnswerBoxComponent} from "../answer-box/answer-box.component";
+import {Question} from "../shared/Question";
+import {TriviaApiService} from "../api/trivia-api.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-question-list-page',
@@ -11,26 +14,13 @@ import {AnswerBoxComponent} from "../answer-box/answer-box.component";
 })
 export class QuestionListPageComponent implements OnInit{
   items: MenuItem[];
-  questions = [
-    {
-      text: 'Qual è la capitale dell\'Italia?',
-      options: ['Roma', 'Milano', 'Firenze'],
-      correctOption: 'Roma'
-    },
-    {
-      text: 'Quale pianeta è noto come la "stella del mattino" o la "stella della sera"?',
-      options: ['Marte', 'Venere', 'Giove'],
-      correctOption: 'Venere'
-    },
-    {
-      text: 'Quanto è 2 + 2?',
-      options: ['3', '4', '5'],
-      correctOption: '4'
-    }
-    // Aggiungi altre domande se necessario
-  ];
-
-  constructor(private messageService: MessageService, private dialogService: DialogService) {
+  questions: Question[] = new Array();
+  private qsName: string  = "";
+  private category: string  = "";
+  constructor(private messageService: MessageService,
+              private dialogService: DialogService,
+              private triviaService: TriviaApiService,
+              private route: ActivatedRoute) {
     this.items = [
       {
         label: 'Edit',
@@ -49,6 +39,25 @@ export class QuestionListPageComponent implements OnInit{
     ];
   }
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe(params => {
+      this.qsName = <string>params.get('qs');
+      this.category = <string>params.get('categoryName');
+    });
+
+
+
+
+    this.triviaService.getQuestionList(this.qsName, this.category).subscribe({
+      next: (v) => this.questions = v,
+      error: (e) => this.messageService.add({
+        severity: "error",
+        summary: "Error",
+        detail: e['message'],
+      })
+    })
+
+
   }
 
   openModal() {
@@ -67,7 +76,7 @@ export class QuestionListPageComponent implements OnInit{
 
   }
 
-  openDialog(question: any) {
+  openDialog(question: Question) {
     const ref = this.dialogService.open(AnswerBoxComponent, {
       data: {
         question: question

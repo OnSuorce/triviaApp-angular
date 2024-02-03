@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
+import {TriviaApiService} from "../api/trivia-api.service";
+import {Question} from "../shared/Question";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-answer-box',
@@ -7,28 +11,37 @@ import {DynamicDialogConfig, DynamicDialogRef} from "primeng/dynamicdialog";
   styleUrls: ['./answer-box.component.css']
 })
 export class AnswerBoxComponent {
-  question: any;
+  question: Question;
   guessed: boolean | null = null
   selectedOptionIndex: number | null = null;
   constructor(
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    private triviaApi: TriviaApiService
   ) {
     this.question = config.data.question;
   }
+  optionSelected: any;
 
-  isCorrectOption(option: number | null): boolean {
-    return true;
+  isOptionCorrect: boolean | null = null;
+
+  selectOption(option: string) {
+    this.isCorrect(option).subscribe( {
+
+      next: value => {
+        this.optionSelected = option;
+        this.isOptionCorrect = value;
+        console.log(value)
+      }
+
+      // Altre azioni in base al risultato
+    });
   }
 
-  selectOption(index: number): void {
-    this.selectedOptionIndex = index;
-  }
-
-  onQuestionClick(): void {
-    if (this.selectedOptionIndex !== null && this.isCorrectOption(this.question.options[this.selectedOptionIndex])) {
-
-    }
+  isCorrect(option: any): Observable<boolean> {
+    return this.triviaApi.postAnswer(option, this.question.uuid).pipe(
+        map(value => value.matched )
+    );
   }
 
 

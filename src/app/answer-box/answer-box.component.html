@@ -1,7 +1,13 @@
 <div class="answer-container">
-  <h2 class="answer-question">{{ question.text}}</h2>
+  <h2 class="answer-question">{{ question.questionTitle }}</h2>
   <hr class="answer-separator" />
   <div class="answer-options">
-    <button *ngFor="let option of question.options" class="answer-button">{{ option }}</button>
+    <button *ngFor="let option of question.optionList"
+            (click)="selectOption(option)"
+            [ngClass]="{'correct': optionSelected === option && isOptionCorrect,
+                        'wrong': optionSelected === option && isOptionCorrect === false}"
+            class="answer-button">
+      {{ option }}
+    </button>
   </div>
 </div>
